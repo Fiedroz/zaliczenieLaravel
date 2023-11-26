@@ -16,11 +16,11 @@
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
-                @role('moderator|administrator')
+                @if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('administrator'))
                     <li><a href="/products">Products</a></li>
                     <li><a href="/users">Users</a></li>
                     <li><a href="/orders">Orders</a></li>
-                @endrole
+                @endif
             @else
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">Register</a></li>
