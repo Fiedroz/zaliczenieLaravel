@@ -16,9 +16,13 @@
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
-                @if(auth()->user()->hasRole('moderator') || auth()->user()->hasRole('administrator'))
+                @if(auth()->user()->hasRole('administrator'))
                     <li><a href="/products">Products</a></li>
                     <li><a href="/users">Users</a></li>
+                    <li><a href="/orders">Orders</a></li>
+                @endif
+                @if(auth()->user()->hasRole('moderator'))
+                    <li><a href="/products">Products</a></li>
                     <li><a href="/orders">Orders</a></li>
                 @endif
             @else

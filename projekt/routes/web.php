@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,14 +46,15 @@ Route::get('/register', [RegisterController::class, 'registerForm'])->name('regi
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-    Route::middleware(['role:moderator|administrator'])->group(function () {
+
         Route::resource('/products', ProductController::class);
-        Route::resource('/users', UserController::class);
+        Route::get('/users', [AdminController::class, 'index'])->name('index');
         Route::resource('/orders', OrderController::class);
-    });
+
+        Route::resource('/products', ProductController::class);
+        Route::resource('/orders', OrderController::class);
 });
