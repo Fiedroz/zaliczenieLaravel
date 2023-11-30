@@ -59,12 +59,14 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/products', ProductController::class);
         Route::get('/users', [AdminController::class, 'index'])->name('index');
-        Route::resource('/orders', OrderController::class);
+
 
         Route::resource('products', ProductController::class);
         Route::post('/products/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.addToCart');
         Route::post('/products/{id}/remove-from-cart', [ProductController::class, 'removeFromCart'])->name('products.removeFromCart');
-    
+
+        Route::resource('/orders', OrderController::class);
         Route::get('/orders', [OrderController::class, 'index'])->name('index');    
         Route::post('/cart/checkout', [OrderController::class, 'checkout'])->name('cart.checkout');
+        
 });

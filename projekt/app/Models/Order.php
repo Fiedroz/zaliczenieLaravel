@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
-    protected $fillable = ['user_id', 'total_price'];
+    protected $fillable = [
+        'user_id', 'product_ids',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
 
 class OrderController extends Controller
 {
-    // ...
+    public function index()
+    {
+        $orders = Order::with('user')->get();
+        return view('orders.index', compact('orders'));
+    }
+    
 
     public function createOrder(Request $request)
     {
