@@ -3,36 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Product;
 
 class OrderController extends Controller
 {
-    public function index()
-    {
-        return view('orders.index');
-    }
+    // ...
 
-    public function create()
+    public function createOrder(Request $request)
     {
-        return view('orders.create');
-    }
+        // Logika tworzenia zamówienia
+        $cart = $request->session()->get('cart', []);
 
-    public function store(Request $request)
-    {
-        // Logika zapisywania nowego zamówienia
-    }
+        // Przykładowa logika: Utwórz zamówienie w bazie danych na podstawie produktów w koszyku
+        $order = new Order();
+        $order->user_id = auth()->user()->id; // Ustawienie ID użytkownika zalogowanego
+        $order->total_price = 0;
 
-    public function edit($id)
-    {
-        // Logika edycji zamówienia
-    }
+        foreach ($cart as $productId => $productData) {
+            $product = Product::findOrFail($productId);
+            $order->total_price += $product->price * $productData['quantity'];
 
-    public function update(Request $request, $id)
-    {
-        // Logika aktualizacji zamówienia
-    }
+            // Możesz dodać logikę zapisywania produktów zamówienia, na przykład jako relacje
+            // $order->products()->attach($productId, ['quantity' => $productData['quantity']]);
+        }
 
-    public function destroy($id)
+        $order->save();
+
+        // Oczyść koszyk po złożeniu zamówienia
+        $request->session()->forget('cart');
+
+        return redirect()->route('orders.index')->with('success', 'Zamówienie złożone pomyślnie.');
+    }
+    
+    public function checkout()
     {
-        // Logika usuwania zamówienia
+        $user = Auth::user();
+        $cart = $user->cart ?? [];
+
+        // Stwórz nowe zamówienie
+        $order = Order::create([
+            'user_id' => $user->id,
+            'product_ids' => $cart,
+        ]);
+
+        // Wyczyść koszyk
+        $user->update(['cart' => []]);
+
+        return redirect()->route('cart.view')->with('success', 'Order placed successfully.');
     }
 }

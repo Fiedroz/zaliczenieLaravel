@@ -12,6 +12,7 @@
             <li><a href="/">Strona Główna</a></li>
             @auth
                 <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/cart">Cart</a></li>
                 <li><a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf

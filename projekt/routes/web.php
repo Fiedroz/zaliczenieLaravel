@@ -12,6 +12,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 
 use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +47,10 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'registerForm'])->name('register.form');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/checkout', [OrderController::class, 'checkout'])->name('cart.checkout');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -55,6 +61,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users', [AdminController::class, 'index'])->name('index');
         Route::resource('/orders', OrderController::class);
 
-        Route::resource('/products', ProductController::class);
-        Route::resource('/orders', OrderController::class);
+        Route::resource('products', ProductController::class);
+        Route::post('/products/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.addToCart');
+        Route::post('/products/{id}/remove-from-cart', [ProductController::class, 'removeFromCart'])->name('products.removeFromCart');
+    
+        Route::get('/orders', [OrderController::class, 'index'])->name('index');
+        Route::post('/orders/create', [OrderController::class, 'createOrder'])->name('orders.createOrder');
 });
