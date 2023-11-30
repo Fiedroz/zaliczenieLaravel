@@ -65,6 +65,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/products/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.addToCart');
         Route::post('/products/{id}/remove-from-cart', [ProductController::class, 'removeFromCart'])->name('products.removeFromCart');
     
-        Route::get('/orders', [OrderController::class, 'index'])->name('index');
-        Route::post('/orders/create', [OrderController::class, 'createOrder'])->name('orders.createOrder');
+        Route::get('/orders', [OrderController::class, 'index'])->name('index');    
+        Route::post('/cart/checkout', [OrderController::class, 'checkout'])->name('cart.checkout');
 });
