@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <title>Sklep Internetowy</title>
 </head>
 <body>
-    <nav>
+    <div class="wrapper">
+    <nav class="text-subtitle">
         <ul>
-            <li><a href="/">Strona Główna</a></li>
+            <li><a href="/" class="text-subtitle">Strona Główna</a></li>
             @auth
                 <li><a href="/dashboard">Dashboard</a></li>
                 <li><a href="/cart">Cart</a></li>
@@ -32,6 +34,7 @@
             @endauth
         </ul>
     </nav>
+    </div>
 
     <div>
         @yield('content')
