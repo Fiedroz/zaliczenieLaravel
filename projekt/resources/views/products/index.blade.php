@@ -50,13 +50,15 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="4">No products found.</td>
+                                        <td colspan="4" class="text-cta">No products found.</td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
 
-                        <a href="{{ route('products.create') }}" class="btn btn-success btn-add-product">Add Product</a>
+                        <div class="add-product-container">
+                            <a href="{{ route('products.create') }}" class="btn btn-success btn-add-product text-detail">Add Product</a>
+                        </div>
                     </div>
                 </div>
             </div>

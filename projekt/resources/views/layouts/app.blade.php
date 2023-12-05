@@ -8,33 +8,33 @@
     <title>Sklep Internetowy</title>
 </head>
 <body>
-    <div class="wrapper">
+<div class="wrapper">
     <nav class="text-subtitle">
         <ul>
-            <li><a href="/" class="text-subtitle">Strona Główna</a></li>
+            <li id="first"><a href="/" class="text-subtitle">Strona Główna</a></li>
             @auth
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/cart">Cart</a></li>
-                <li><a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                {{-- <li><a href="/dashboard">Dashboard</a></li> --}}
+                <li id="second"><a href="/cart">Cart</a></li>
+                <li id="last"><a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
                 @if(auth()->user()->hasRole('administrator'))
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/users">Users</a></li>
-                    <li><a href="/orders">Orders</a></li>
+                    <li id="third"><a href="/products">Products</a></li>
+                    <li id="forth"><a href="/users">Users</a></li>
+                    <li id="fiveth"><a href="/orders">Orders</a></li>
                 @endif
                 @if(auth()->user()->hasRole('moderator'))
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/orders">Orders</a></li>
+                    <li id="third"><a href="/products">Products</a></li>
+                    <li id="fiveth"><a href="/orders">Orders</a></li>
                 @endif
             @else
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <li id="second"><a href="/login">Login</a></li>
+                <li id="third"><a href="/register">Register</a></li>
             @endauth
         </ul>
     </nav>
-    </div>
+</div>
 
     <div>
         @yield('content')

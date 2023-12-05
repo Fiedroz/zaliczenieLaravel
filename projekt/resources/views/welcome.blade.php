@@ -12,17 +12,17 @@
 @section('content')
 <div class="wrapper">
     <div class="container">
-        <div class="row">
+        <div class="row center">
             @foreach($products as $product)
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-cta bold">{{ $product->name }}</h5>
-                            <p class="card-text text-body">Price: ${{ $product->price }}</p>
-                            <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                            <div class="center"><p class="card-title text-cta bold">{{ $product->name }}</p></div>
+                            <div class="center"><p class="card-text text-body">Price: ${{ $product->price }}</p></div>
+                            <div class="center"><form action="{{ route('cart.add', $product->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Add to Cart</button>
-                            </form>
+                            </form></div>
                         </div>
                     </div>
                 </div>

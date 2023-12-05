@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="wrapper">
-    <div class="container">
+    <div class="container center">
         <div class="row">
             <div class="col-md-12">
                 <h2>Shopping Cart</h2>
@@ -22,20 +22,21 @@
                 @endif
 
                 @forelse($cartProducts as $product)
-                    <div class="card mb-3">
+                    <div class="card mb-3 center">
                         <div class="card-body">
                             <h5 class="card-title text-cta bold">{{ $product->name }}</h5>
                             <p class="card-text text-body">Price: ${{ $product->price }}</p>
                         </div>
                     </div>
                 @empty
-                    <p>No items in the cart.</p>
+                    <p class="text-cta center">No items in the cart.</p>
                 @endforelse
-
+            <div class="center">
                 <form action="{{ route('cart.checkout') }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-primary checkout">Checkout</button>
                 </form>
+            </div>
             </div>
         </div>
     </div>

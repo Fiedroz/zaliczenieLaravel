@@ -12,7 +12,7 @@ body {
 
 .wrapper {
     max-width: 1410px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .btn {
@@ -83,10 +83,10 @@ h3 {
 }
 
 .text-detail {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .bold {
@@ -99,11 +99,33 @@ nav {
     display: flex;
     justify-content: center;
     align-content: center;
-    position: fixed;
     top: 0;
-    padding: 20px 0 20px 0;
-    z-index: 100;
+    padding: 20px 0;
     background-color: rgba(0, 0, 0, 0.226);
+}
+
+#first {
+    order: 1;
+}
+
+#second {
+    order: 2;
+}
+
+#third {
+    order: 3;
+}
+
+#forth {
+    order: 4;
+}
+
+#fiveth {
+    order: 5;
+}
+
+#last {
+    order: 6;
 }
 
 nav ul {
@@ -156,7 +178,7 @@ nav ul li a {
 }
 
 .table th {
-    padding: 0 50px 10px 0;
+    padding: 0 100px 10px 0;
 }
 
 .table .buttons {
@@ -170,6 +192,8 @@ nav ul li a {
 
 .table {
     margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .table .btn {
@@ -190,6 +214,16 @@ nav ul li a {
     background-color: rgba(253, 176, 149, 0.8);
 }
 
+.table .btn-show {
+    background-color: #fdb095;
+    padding: 10px 24.5px;
+    height: 100%;
+}
+
+.table .btn-show:hover {
+    background-color: rgba(253, 176, 149, 0.8);
+}
+
 .table .btn-delete {
     background-color: #e5958e;
     padding: 10px 15px 9px 15px;
@@ -205,6 +239,52 @@ nav ul li a {
     margin: 25px 0 0 0;
 }
 
+.add-product-container {
+    width: fit-content;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .product-list {
     text-align: center;
+}
+
+.input-field-add-product {
+    margin: 15px 0 15px 0;
+    width: 250px;
+    height: 30px;
+    font-size: medium;
+}
+
+.center {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.decorations {
+    text-decoration: none;
+}
+
+.users-list-button-margin {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#margin-users-list {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#add-new-user {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#orders-margin {
+    margin-bottom: 50px;
+}
+
+.margin-top-25 {
+    margin-top: 25px;
 }

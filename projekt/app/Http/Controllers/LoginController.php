@@ -18,7 +18,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Udana autentykacja
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
         // Nieudana autentykacja
