@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.edit', ['user' => $user]);
+        return view('admin.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -51,22 +51,24 @@ class AdminController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|in:user,moderator,administrator',
         ]);
 
         $user = User::findOrFail($id);
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'role' => $request->input('role'),
         ]);
-
-        return redirect('/admin/users')->with('success', 'Dane użytkownika zostały zaktualizowane.');
+        $userss = User::all();
+        return view('admin.index', ['users' => $userss])->with('success', 'Użytkownik został zmieniony.');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-
-        return redirect('/admin/users')->with('success', 'Użytkownik został usunięty.');
+        $userss = User::all();
+        return view('admin.index', ['users' => $userss]);
     }
 }

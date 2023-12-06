@@ -56,10 +56,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-
-        Route::resource('/products', ProductController::class);
-        Route::get('/users', [AdminController::class, 'index'])->name('index');
-
+        Route::get('/users', [AdminController::class, 'index'])->name('admin.users.index');
+        Route::get('/users/edit/{id}', [AdminController::class, 'edit'])->name('admin.users.edit.form');
+        Route::put('/users/update/{id}', [AdminController::class, 'update'])->name('admin.users.update');
+        Route::delete('/users/destroy/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
 
         Route::resource('products', ProductController::class);
         Route::post('/products/{id}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.addToCart');
