@@ -18,10 +18,10 @@
     <table class="table">
         <thead class="text-subtitle">
             <tr>
-                <th>ID</th>
-                <th>Imię i Nazwisko</th>
-                <th>Email</th>
-                <th>Akcje</th>
+                <th style="color:#ffba00">ID</th>
+                <th style="color:#ffba00">Imię i Nazwisko</th>
+                <th style="color:#ffba00">Email</th>
+                <th style="color:#ffba00">Akcje</th>
             </tr>
         </thead>
         <tbody class="text-cta">

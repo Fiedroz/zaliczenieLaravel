@@ -288,3 +288,7 @@ nav ul li a {
 .margin-top-25 {
     margin-top: 25px;
 }
+
+.justify-right {
+    justify-content: right;
+}

@@ -18,9 +18,9 @@
                 @foreach($orders as $order)
                 <div class="card mb-3">
                     <div class="card-body" id="orders-margin">
-                        <p class="card-title text-cta"><b>Order ID: </b>{{ $order->id }}</p>
-                        <p class="card-text text-cta"><b>User: </b>{{ $order->user->name }}</p>
-                        <p class="card-text text-cta"><b>Product IDs: </b>{{ $order->product_ids }}</p>
+                        <p class="card-title text-cta"><b style="color:#ffba00"> ID: </b>{{ $order->id }}</p>
+                        <p class="card-text text-cta"><b style="color:#ffba00">User: </b>{{ $order->user->name }}</p>
+                        <p class="card-text text-cta"><b style="color:#ffba00">Product IDs: </b>{{ $order->product_ids }}</p>
                         <hr>
                     </div>
                 </div>

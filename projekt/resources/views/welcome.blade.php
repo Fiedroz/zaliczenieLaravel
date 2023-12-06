@@ -17,7 +17,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <div class="center"><p class="card-title text-cta bold">{{ $product->name }}</p></div>
+                            <div class="center"><p class="card-title text-cta bold" style="color:#ffba00">{{ $product->name }}</p></div>
                             <div class="center"><p class="card-text text-body">Price: ${{ $product->price }}</p></div>
                             <div class="center"><form action="{{ route('cart.add', $product->id) }}" method="POST">
                                 @csrf

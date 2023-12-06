@@ -24,7 +24,7 @@
                 @forelse($cartProducts as $product)
                     <div class="card mb-3 center">
                         <div class="card-body">
-                            <h5 class="card-title text-cta bold">{{ $product->name }}</h5>
+                            <h5 class="card-title text-cta bold" style="color:#ffba00">{{ $product->name }}</h5>
                             <p class="card-text text-body">Price: ${{ $product->price }}</p>
                         </div>
                     </div>

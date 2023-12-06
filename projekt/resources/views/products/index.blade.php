@@ -27,10 +27,10 @@
                         <table class="table">
                             <thead class="text-subtitle">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Actions</th>
+                                    <th style="color:#ffba00">ID</th>
+                                    <th style="color:#ffba00">Name</th>
+                                    <th style="color:#ffba00">Price</th>
+                                    <th style="color:#ffba00">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="text-cta">
